@@ -1,10 +1,11 @@
 import * as React from "react";
+import Game from "./Game/Game";
+import "./App.css";
+
 export interface HelloWorldProps {
-  userName: string;
-  lang: string;
+    userName: string;
+    lang: string;
 }
 export const App = () => (
-  <h1>
-    Hello World!
-  </h1>
+    <Game></Game>
 );
