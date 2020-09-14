@@ -1,10 +1,8 @@
 import * as React from "react";
+import Landingpage from "./Landingpage/Landingpage";
+import "./App.css";
 export interface HelloWorldProps {
   userName: string;
   lang: string;
 }
-export const App = () => (
-  <h1>
-    Hello World!
-  </h1>
-);
+export const App = () => <Landingpage></Landingpage>;
