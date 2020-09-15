@@ -1,8 +1,10 @@
 import * as React from "react";
-import Landingpage from "./Landingpage/Landingpage";
+import Game from "./Game/Game";
 import "./App.css";
-export interface HelloWorldProps {
-  userName: string;
-  lang: string;
-}
-export const App = () => <Landingpage></Landingpage>;
+import Landingpage from "./Landingpage/Landingpage";
+
+
+export const App = () => (
+    <Game></Game>
+);
+
