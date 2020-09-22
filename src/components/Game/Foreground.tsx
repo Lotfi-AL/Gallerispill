@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import charWalkCycle from "../../assets/character/walkCycle.png";
+import buttonText from "../../assets/character/buttonText.png";
+import housePaintings from "../../assets/house/paintings.png";
 
 const Foreground = (
     props: JSX.IntrinsicAttributes &
@@ -8,11 +10,19 @@ const Foreground = (
 ) => {
     const canvasRef = useRef(null);
 
-    let characterX = 260;
+    let characterX = 250;
     const characterSpeed = 2;
 
-    let sprite = new Image();
+    const sprite = new Image();
     sprite.src = charWalkCycle;
+
+    const spacebar = new Image();
+    spacebar.src = buttonText;
+
+    const paintings = new Image();
+    paintings.src = housePaintings;
+    const paintingPositions = [40, 120, 200];
+    const activePainting = [false, false, false];
 
     let currentFrame = 0;
     let row = 1;
@@ -20,6 +30,34 @@ const Foreground = (
 
     const draw = (ctx: CanvasRenderingContext2D) => {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+   
+        ctx.drawImage(paintings, 0, 0, 32, 32, paintingPositions[0], 32, 32, 32);
+        ctx.drawImage(paintings, 32, 0, 32, 32, paintingPositions[1], 32, 32, 32);
+        ctx.drawImage(paintings, 32, 32, 32, 32, paintingPositions[2], 32, 32, 32);
+
+
+
+        if(characterX > paintingPositions[0] - 16 && characterX < paintingPositions[0] + 32) {
+            ctx.drawImage(spacebar, 0, 0, 64, 32, paintingPositions[0] - 16, 16, 64, 32);
+            activePainting[0] = true;
+        } else {
+            activePainting[0] = false;
+
+        }
+        
+        if(characterX > paintingPositions[1] - 16 && characterX < paintingPositions[1] + 32) {
+            ctx.drawImage(spacebar, 0, 0, 64, 32, paintingPositions[1] - 16, 16, 64, 32);
+            activePainting[1] = true;
+        } else {
+            activePainting[1] = false;
+        }
+        
+        if(characterX > paintingPositions[2] - 16 && characterX < paintingPositions[2] + 32) {
+            ctx.drawImage(spacebar, 0, 0, 64, 32, paintingPositions[2] - 16, 16, 64, 32);
+            activePainting[2] = true;
+        } else {
+            activePainting[2] = false;
+        }
 
         if (walking) {
             currentFrame++;
@@ -31,14 +69,13 @@ const Foreground = (
                 20,
                 20,
                 characterX,
+                60,
                 20,
-                40,
-                40
+                20
             );
         } else {
-            ctx.drawImage(sprite, 0, row * 20, 20, 20, characterX, 20, 40, 40);
+            ctx.drawImage(sprite, 0, row * 20, 20, 20, characterX, 60, 20, 20);
         }
-        ctx.fill();
     };
 
     document.onkeydown = (event) => {
@@ -58,6 +95,16 @@ const Foreground = (
         if (event.keyCode === 39 || event.keyCode === 37) {
             currentFrame = 0;
         }
+
+        if(event.keyCode === 32) {
+            if(activePainting[0]) {
+                console.log("Toggle Night!");
+            } else if(activePainting[1]) {
+                console.log("Toggle Wind!");
+            } else if(activePainting[2]) {
+                console.log("Toggle Rain!");
+            }
+        }
     };
 
     useEffect(() => {
@@ -72,13 +119,13 @@ const Foreground = (
 
         const render = () => {
             draw(context);
-            fpsTimer = setTimeout(render, 1000 / 8);
+            fpsTimer = setTimeout(render, 1000 / 12);
         };
 
         render();
     }, [draw]);
 
-    return <canvas width="560" ref={canvasRef} {...props} />;
+    return <canvas width="480" height="100" ref={canvasRef} {...props} />;
 };
 
 export default Foreground;
