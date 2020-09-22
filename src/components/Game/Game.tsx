@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
+import Background from './Background';
 import Foreground from "./Foreground";
 import "./Game.css";
 
@@ -14,7 +15,10 @@ export default class Game extends Component {
 
     render() {
         return (
-            <Foreground className="foreground"/>
+            <>
+                <Background className="background"/>
+                <Foreground className="foreground"/>
+            </>
         );
     }
 }
