@@ -5,6 +5,7 @@ import { StatusContext, statusType } from "./Store/StatusContext";
 import Audio from "./ControlPanel/Audio";
 import { StatusProvider } from "./Store/StatusProvider";
 import Ask from "./Store/StatusContextExample";
+import ControlPanel from "./ControlPanel/ControlPanel";
 type MyState = {
   landed: boolean;
 };
@@ -39,10 +40,12 @@ export class App extends React.Component<{}, MyState> {
     if (this.state.landed) {
       return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
     }
+
     return (
       <StatusProvider>
         <Game></Game>
         <Audio></Audio>
+        <ControlPanel></ControlPanel>
       </StatusProvider>
     );
   }

@@ -9,7 +9,7 @@ export type StatusContextType = {
   setStatus: (value: statusType) => void;
 };
 
-export const defaultStatus = {
+export let defStatus = {
   rain: false,
   wind: false,
   night: false,

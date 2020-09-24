@@ -1,5 +1,7 @@
 import React from "react";
-import { Load, Save } from "./../../utils/Save";
+import { saveStorage } from "../../utils/LoadSave";
+import { useStatus } from "../Store/StatusProvider";
 export default function SaveBtn() {
-  return <button onClick={Save}></button>;
+  const { status, setStatus } = useStatus();
+  return <button onClick={() => saveStorage(status)}>save</button>;
 }
