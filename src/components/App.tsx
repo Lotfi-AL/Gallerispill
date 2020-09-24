@@ -38,13 +38,13 @@ export class App extends React.Component<{}, MyState> {
   };
 
   render() {
-    if (this.state.landed) {
-      return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
-    }
+    // if (this.state.landed) {
+    //   return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
+    // }
     return (
       <StatusContext.Provider value={this.state.status}>
         <Game></Game>
-        <Audio></Audio>
+        <Poetry></Poetry>
       </StatusContext.Provider>
     );
   }

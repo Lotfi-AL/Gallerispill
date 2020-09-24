@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
+import './Poetry.css';
+import '../App.css';
 
 
 interface PoetryDB{
@@ -9,38 +11,50 @@ interface PoetryDB{
 }
 
 
-
 export default class Poetry extends Component<{}, PoetryDB> {
+
+   
     async getPoem(a:String, t:String) {
+      
         let response = await fetch('https://poetrydb.org/author,title/'+a+';'+t);
+        
         let data = await response.json();
-        console.log(data);
         this.setState({
             author: data[0].author,
             title: data[0].title,
-            lines: data[0].lines
-        });    
-         console.log('FAEN', data);
-        // console.log(this.state);
+            lines: data[0].lines 
+        })  
+        
+         
     };
 
-    componentDidMount(){
-        console.log("1");
-        this.getPoem("George Eliot", "God Needs Antonio");
-        console.log(this.state);
-    }
     
-
-   
+    componentDidMount(){
+        this.getPoem("George Eliot", "God Needs Antonio");
+    }
     render() {
-        console.log(this.state);
-        return (
-            <div>
-                <h1>{this.state.title}</h1>
-                <h2>{this.state.author}</h2>
-                <p>{this.state.lines}</p>
+        if (!this.state) {
+            return <div>
+                <p>Loading...</p>
             </div>
-        // <p> {this.state}</p>
+        }
+        
+        console.log(this.state.author)
+        const items = this.state.lines.map((line, index) => {
+            return <p key={index}>{line}</p>
+        })
+
+        return (
+            
+            <div className="poemContainer">
+                <h1>{this.state.author}</h1>
+                <h2>{this.state.title}</h2>
+                <div className="poemLines">
+                    {items}
+                </div>
+            </div>
+            
         );
     }
 }
+
