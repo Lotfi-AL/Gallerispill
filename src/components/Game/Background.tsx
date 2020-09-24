@@ -3,6 +3,7 @@ import interior from "../../assets/house/interior.png";
 import tileMap from "../../assets/house/layout.json";
 
 const Background = (props: any) => {
+  const canvasRef = useRef(null);
 
     const [loading, setLoading] = useState(true);
     const canvasRef = useRef(null);
@@ -48,7 +49,7 @@ const Background = (props: any) => {
 
     }, [loading]);
 
-    return <canvas width="480" height="100" ref={canvasRef} {...props} />;
-}
+  return <canvas width="480" height="100" ref={canvasRef} {...props} />;
+};
 
 export default Background;
