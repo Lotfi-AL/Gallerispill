@@ -1,55 +1,53 @@
 .poemContainer {
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
     max-width: 30vw;
     height: 100vh;
     overflow-y: scroll;
-    overflow-x:none;
-    margin-right:2;
+    overflow-x: none;
+    margin-right: 2;
     background-color: rgb(76, 39, 25);
     border-left-style: dashed;
-    
+}
+.poemContainer::-webkit-scrollbar {
+    display: none;
 }
 
-.poemContainer h1, h2{
-    font-style: 'Press Start 2P';
-    margin:auto;
+/* Hide scrollbar for IE, Edge and Firefox */
+.poemContainer {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.poemContainer h1,
+h2 {
+    font-style: "Press Start 2P";
+    margin: auto;
     margin-top: 4%;
     text-align: center;
     width: 100%;
     font-size: calc(10px + 6 * ((100vw - 420px) / 680));
 }
 .poemLines {
-    margin:auto;
+    position: relative;
+    margin: auto;
     text-align: center;
     width: 90%;
     line-height: 1.6;
     font-size: calc(5px + 6 * ((100vw - 420px) / 680));
-    color:white;
+    color: white;
+    font-style: "Press Start 2P";
 }
 
 .word {
-    margin:auto;
+    position: relative;
+    margin: auto;
     text-align: center;
-    width: 100%;
-    line-height: 2;
+    width: 90%;
+    bottom: 0;
+    line-height: 1.6;
     font-size: calc(5px + 6 * ((100vw - 420px) / 680));
-    color:black;
-  }
-  @keyframes run-text {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  .word::after {
-    content: attr(data-text);
-    position: absolute;
-    text-align: center;
-    font-size: calc(5px + 6 * ((100vw - 420px) / 680));
-    color: red;
-    overflow: hidden;
-    width: 100%;
-    animation: run-text 5s infinite linear;
-    text-shadow: 0 0 3px rgba(255,255,255,1); 
-  }
-  
+    color: black;
+    font-style: "Press Start 2P";
+}
