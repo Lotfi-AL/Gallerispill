@@ -1,53 +1,54 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Landingpage from "./Landingpage/Landingpage";
 import Poetry from "./Poetry/Poetry";
 import Game from "./Game/Game";
-import { StatusContext, status, statusType } from "./../StatusContext";
+import { StatusContext, statusType } from "./Store/StatusContext";
 import Audio from "./ControlPanel/Audio";
+import { StatusProvider } from "./Store/StatusProvider";
+import Ask from "./Store/StatusContextExample";
+import ControlPanel from "./ControlPanel/ControlPanel";
 type MyState = {
-  landed: boolean;
-  status: statusType;
+    landed: boolean;
 };
 
 interface ToggleProps {
-  ClickHandler: () => void;
+    ClickHandler: () => void;
 }
+export type saveState = {
+    landed: boolean;
+};
 
 export class App extends React.Component<{}, MyState> {
-  state: MyState = { landed: true, status: status };
-  constructor(props: any) {
-    super(props);
-    this.toggleClickHandler = this.toggleClickHandler.bind(this);
-  }
+    state: MyState = { landed: true };
 
+    constructor(props: any) {
+        super(props);
+        this.toggleClickHandler = this.toggleClickHandler.bind(this);
+    }
 
-  toggleClickHandler = () => {
-    this.setState((prevState) => {
-      if (prevState.landed === true) {
-        return { landed: false };
-      }
-      if (prevState.landed === false) {
-        return { landed: true };
-      }
-    });
-  };
-  setStatus = (newStatus: statusType) => {
-    this.setState((state) => ({
-      status: newStatus,
-    }));
-  };
+    toggleClickHandler = () => {
+        this.setState((prevState) => {
+            if (prevState.landed === true) {
+                return { landed: false };
+            }
+            if (prevState.landed === false) {
+                return { landed: true };
+            }
+        });
+    };
 
-  render() {
-    // if (this.state.landed) {
-    //   return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
-    // }
-    return (
-      <>
-      <StatusContext.Provider value={this.state.status}>
-        <Game></Game>
-        <Poetry></Poetry>
-      </StatusContext.Provider>
-      </>
-    );
-  }
+    render() {
+        if (this.state.landed) {
+            return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
+        }
+
+        return (
+            <StatusProvider>
+                <Game></Game>
+                <Audio></Audio>
+                <ControlPanel></ControlPanel>
+                <Poetry></Poetry>
+            </StatusProvider>
+        );
+    }
 }
