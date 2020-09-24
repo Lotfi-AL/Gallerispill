@@ -4,7 +4,6 @@ import buttonText from "../../assets/character/buttonText.png";
 import housePaintings from "../../assets/house/paintings.png";
 import {useStatus} from "../Store/StatusProvider";
 
-//const canvas = document.createElement("canvas");
 let characterX = 250;
 
 const Foreground = (
@@ -15,7 +14,6 @@ const Foreground = (
     const canvasRef = useRef(null);
     const {status, setStatus} = useStatus();
 
-    //let characterX = 250;
     const characterSpeed = 2;
 
     const sprite = new Image();
@@ -48,7 +46,6 @@ const Foreground = (
             activePainting[0] = true;
         } else {
             activePainting[0] = false;
-
         }
         
         if(characterX > paintingPositions[1] - 16 && characterX < paintingPositions[1] + 32) {
@@ -87,11 +84,11 @@ const Foreground = (
     document.onkeydown = (event) => {
         if (event.keyCode === 39) {
             walking = true;
-            characterX += characterSpeed;
+            characterX < 455 ? characterX += characterSpeed : null;
             row = 0;
         } else if (event.keyCode === 37) {
             walking = true;
-            characterX -= characterSpeed;
+            characterX > 5 ? characterX -= characterSpeed : null;
             row = 1;
         }
     };
