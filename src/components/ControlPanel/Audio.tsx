@@ -6,11 +6,11 @@ import Sound from "./Sound";
 import { useStatus } from "../Store/StatusProvider";
 
 export default function Audio() {
-  const { status, setStatus } = useStatus();
-  return (
-    <React.Fragment>
-      <Sound src={rainSrc} ter={status.rain} />
-      <Sound src={windSrc} ter={status.wind} />
-    </React.Fragment>
-  );
+    const { status, setStatus } = useStatus();
+    return (
+        <React.Fragment>
+            <Sound src={rainSrc} ter={status.rain} />
+            <Sound src={windSrc} ter={status.wind} />
+        </React.Fragment>
+    );
 }
