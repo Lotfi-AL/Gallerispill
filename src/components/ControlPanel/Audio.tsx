@@ -1,7 +1,6 @@
 import React from "react";
 import { StatusContext } from "../Store/StatusContext";
 import rainSrc from "../../assets/soundeffects/rain.mp3";
-// import fireSrc from "../../assets/soundeffects/fire.mp3";
 import windSrc from "../../assets/soundeffects/wind.mp3";
 import Sound from "./Sound";
 import { useStatus } from "../Store/StatusProvider";

@@ -43,7 +43,6 @@ export class App extends React.Component<{}, MyState> {
       <StatusProvider>
         <Game></Game>
         <Audio></Audio>
-        <Ask></Ask>
       </StatusProvider>
     );
   }
