@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import charWalkCycle from "../../assets/character/walkCycle.png";
-import buttonText from "../../assets/character/buttonText.png";
-import housePaintings from "../../assets/house/paintings.png";
+import textSprite from "../../assets/character/buttonText.png";
+import paintingsSprite from "../../assets/house/paintings.png";
+import doorSprite from "../../assets/house/door.png";
 import { useStatus } from "../Store/StatusProvider";
 import { statusType } from "../Store/StatusContext";
 
@@ -11,30 +12,27 @@ let row = 1;
 const Foreground = (
     props: JSX.IntrinsicAttributes &
         import("react").ClassAttributes<HTMLCanvasElement> &
-<<<<<<< HEAD
-        import("react").CanvasHTMLAttributes<HTMLCanvasElement>
-=======
         import("react").CanvasHTMLAttributes<HTMLCanvasElement>,
->>>>>>> a3f149655aa3f5a9b9bba5f4e869d1bfd0443d22
 ) => {
     const canvasRef = useRef(null);
     const { status, setStatus } = useStatus();
 
     const characterSpeed = 2;
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> a3f149655aa3f5a9b9bba5f4e869d1bfd0443d22
     const sprite = new Image();
     sprite.src = charWalkCycle;
 
     const spacebar = new Image();
-    spacebar.src = buttonText;
+    spacebar.src = textSprite;
+
+    const door = new Image();
+    door.src = doorSprite;
+    const doorPositions = [10, 438];
+    const activeDoor = [false, false];
 
     const paintings = new Image();
-    paintings.src = housePaintings;
-    const paintingPositions = [40, 120, 200];
+    paintings.src = paintingsSprite;
+    const paintingPositions = [60, 110, 160];
     const activePainting = [false, false, false];
 
     let fpsTimer: NodeJS.Timeout;
@@ -42,32 +40,56 @@ const Foreground = (
 
     let walking = false;
 
+    const isCharacterWithin = (x: number, width: number) => {
+        if (characterX > x - 16 && characterX < x + width) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     const draw = (ctx: CanvasRenderingContext2D) => {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
         ctx.drawImage(paintings, 0, 0, 32, 32, paintingPositions[0], 32, 32, 32);
         ctx.drawImage(paintings, 32, 0, 32, 32, paintingPositions[1], 32, 32, 32);
         ctx.drawImage(paintings, 32, 32, 32, 32, paintingPositions[2], 32, 32, 32);
+        ctx.drawImage(door, 32, 0, 32, 48, doorPositions[0], 32, 32, 48);
+        ctx.drawImage(door, 32, 0, 32, 48, doorPositions[1], 32, 32, 48);
 
-        if (characterX > paintingPositions[0] - 16 && characterX < paintingPositions[0] + 32) {
+        if (isCharacterWithin(paintingPositions[0], 32)) {
             ctx.drawImage(spacebar, 0, 0, 64, 32, paintingPositions[0] - 16, 16, 64, 32);
             activePainting[0] = true;
         } else {
             activePainting[0] = false;
         }
 
-        if (characterX > paintingPositions[1] - 16 && characterX < paintingPositions[1] + 32) {
+        if (isCharacterWithin(paintingPositions[1], 32)) {
             ctx.drawImage(spacebar, 0, 0, 64, 32, paintingPositions[1] - 16, 16, 64, 32);
             activePainting[1] = true;
         } else {
             activePainting[1] = false;
         }
 
-        if (characterX > paintingPositions[2] - 16 && characterX < paintingPositions[2] + 32) {
+        if (isCharacterWithin(paintingPositions[2], 32)) {
             ctx.drawImage(spacebar, 0, 0, 64, 32, paintingPositions[2] - 16, 16, 64, 32);
             activePainting[2] = true;
         } else {
             activePainting[2] = false;
+        }
+
+        if (isCharacterWithin(doorPositions[0], 32)) {
+            ctx.drawImage(door, 0, 0, 32, 48, doorPositions[0], 32, 32, 48);
+            activeDoor[0] = true;
+        } else {
+            activeDoor[0] = false;
+        }
+
+        if (isCharacterWithin(doorPositions[1], 32)) {
+            ctx.drawImage(door, 0, 0, 32, 48, doorPositions[1], 32, 32, 48);
+            activeDoor[1] = true;
+        } else {
+            activeDoor[1] = false;
         }
 
         if (walking) {
@@ -118,6 +140,10 @@ const Foreground = (
                 clearTimeout(fpsTimer);
                 newStatus.rain = !newStatus.rain;
                 setStatus(newStatus);
+            } else if (activeDoor[0]) {
+                console.log("Left door entered");
+            } else if (activeDoor[1]) {
+                console.log("Right door entered");
             }
         }
     };
