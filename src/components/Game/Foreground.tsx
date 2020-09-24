@@ -7,16 +7,25 @@ import { statusType } from "../Store/StatusContext";
 
 let characterX = 250;
 let row = 1;
+
 const Foreground = (
     props: JSX.IntrinsicAttributes &
         import("react").ClassAttributes<HTMLCanvasElement> &
+<<<<<<< HEAD
         import("react").CanvasHTMLAttributes<HTMLCanvasElement>
+=======
+        import("react").CanvasHTMLAttributes<HTMLCanvasElement>,
+>>>>>>> a3f149655aa3f5a9b9bba5f4e869d1bfd0443d22
 ) => {
     const canvasRef = useRef(null);
     const { status, setStatus } = useStatus();
 
     const characterSpeed = 2;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> a3f149655aa3f5a9b9bba5f4e869d1bfd0443d22
     const sprite = new Image();
     sprite.src = charWalkCycle;
 
