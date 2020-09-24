@@ -7,46 +7,46 @@ import { StatusProvider } from "./Store/StatusProvider";
 import Ask from "./Store/StatusContextExample";
 import ControlPanel from "./ControlPanel/ControlPanel";
 type MyState = {
-  landed: boolean;
+    landed: boolean;
 };
 
 interface ToggleProps {
-  ClickHandler: () => void;
+    ClickHandler: () => void;
 }
 export type saveState = {
-  landed: boolean;
+    landed: boolean;
 };
 
 export class App extends React.Component<{}, MyState> {
-  state: MyState = { landed: true };
+    state: MyState = { landed: true };
 
-  constructor(props: any) {
-    super(props);
-    this.toggleClickHandler = this.toggleClickHandler.bind(this);
-  }
-
-  toggleClickHandler = () => {
-    this.setState((prevState) => {
-      if (prevState.landed === true) {
-        return { landed: false };
-      }
-      if (prevState.landed === false) {
-        return { landed: true };
-      }
-    });
-  };
-
-  render() {
-    if (this.state.landed) {
-      return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
+    constructor(props: any) {
+        super(props);
+        this.toggleClickHandler = this.toggleClickHandler.bind(this);
     }
 
-    return (
-      <StatusProvider>
-        <Game></Game>
-        <Audio></Audio>
-        <ControlPanel></ControlPanel>
-      </StatusProvider>
-    );
-  }
+    toggleClickHandler = () => {
+        this.setState((prevState) => {
+            if (prevState.landed === true) {
+                return { landed: false };
+            }
+            if (prevState.landed === false) {
+                return { landed: true };
+            }
+        });
+    };
+
+    render() {
+        if (this.state.landed) {
+            return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
+        }
+
+        return (
+            <StatusProvider>
+                <Game></Game>
+                <Audio></Audio>
+                <ControlPanel></ControlPanel>
+            </StatusProvider>
+        );
+    }
 }
