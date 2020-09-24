@@ -1,19 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Landingpage from "./Landingpage/Landingpage";
 import Game from "./Game/Game";
-import { StatusContext, status, statusType } from "./../StatusContext";
+import { StatusContext, statusType } from "./Store/StatusContext";
 import Audio from "./ControlPanel/Audio";
+import { StatusProvider } from "./Store/StatusProvider";
+import Ask from "./Store/StatusContextExample";
 type MyState = {
   landed: boolean;
-  status: statusType;
 };
 
 interface ToggleProps {
   ClickHandler: () => void;
 }
+export type saveState = {
+  landed: boolean;
+};
 
 export class App extends React.Component<{}, MyState> {
-  state: MyState = { landed: true, status: status };
+  state: MyState = { landed: true };
+
   constructor(props: any) {
     super(props);
     this.toggleClickHandler = this.toggleClickHandler.bind(this);
@@ -29,21 +34,17 @@ export class App extends React.Component<{}, MyState> {
       }
     });
   };
-  setStatus = (newStatus: statusType) => {
-    this.setState((state) => ({
-      status: newStatus,
-    }));
-  };
 
   render() {
     if (this.state.landed) {
       return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
     }
     return (
-      <StatusContext.Provider value={this.state.status}>
+      <StatusProvider>
         <Game></Game>
         <Audio></Audio>
-      </StatusContext.Provider>
+        <Ask></Ask>
+      </StatusProvider>
     );
   }
 }

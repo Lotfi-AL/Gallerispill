@@ -1,21 +1,17 @@
 import React from "react";
-import { StatusContext } from "./../../StatusContext";
+import { StatusContext } from "../Store/StatusContext";
 import rainSrc from "../../assets/soundeffects/rain.mp3";
 // import fireSrc from "../../assets/soundeffects/fire.mp3";
 import windSrc from "../../assets/soundeffects/wind.mp3";
 import Sound from "./Sound";
+import { useStatus } from "../Store/StatusProvider";
 
 export default function Audio() {
+  const { status, setStatus } = useStatus();
   return (
-    <StatusContext.Consumer>
-      {({ rain, wind, fire }) => {
-        return (
-          <React.Fragment>
-            <Sound src={rainSrc} ter={!rain} />
-            <Sound src={windSrc} ter={!wind} />
-          </React.Fragment>
-        );
-      }}
-    </StatusContext.Consumer>
+    <React.Fragment>
+      <Sound src={rainSrc} ter={!status.rain} />
+      <Sound src={windSrc} ter={!status.wind} />
+    </React.Fragment>
   );
 }
