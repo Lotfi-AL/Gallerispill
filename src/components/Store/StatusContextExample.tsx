@@ -6,8 +6,8 @@ export default function Ask() {
   const change = () => {
     const rain = status.rain;
     const wind = status.wind;
-    const fire = true;
-    setStatus({ rain, wind, fire });
+    const night = true;
+    setStatus({ rain, wind, night });
   };
   return (
     <div>

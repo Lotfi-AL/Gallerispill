@@ -2,6 +2,10 @@ import React, { useRef, useEffect } from "react";
 import charWalkCycle from "../../assets/character/walkCycle.png";
 import buttonText from "../../assets/character/buttonText.png";
 import housePaintings from "../../assets/house/paintings.png";
+import {useStatus} from "../Store/StatusProvider";
+
+//const canvas = document.createElement("canvas");
+let characterX = 250;
 
 const Foreground = (
     props: JSX.IntrinsicAttributes &
@@ -9,8 +13,9 @@ const Foreground = (
         import("react").CanvasHTMLAttributes<HTMLCanvasElement>
 ) => {
     const canvasRef = useRef(null);
+    const {status, setStatus} = useStatus();
 
-    let characterX = 250;
+    //let characterX = 250;
     const characterSpeed = 2;
 
     const sprite = new Image();
@@ -18,12 +23,13 @@ const Foreground = (
 
     const spacebar = new Image();
     spacebar.src = buttonText;
-
+    
     const paintings = new Image();
     paintings.src = housePaintings;
     const paintingPositions = [40, 120, 200];
     const activePainting = [false, false, false];
-
+    
+    let fpsTimer: NodeJS.Timeout;
     let currentFrame = 0;
     let row = 1;
     let walking = false;
@@ -99,10 +105,16 @@ const Foreground = (
         if(event.keyCode === 32) {
             if(activePainting[0]) {
                 console.log("Toggle Night!");
+                clearTimeout(fpsTimer);
+                setStatus({night: !status.night, rain: status.rain, wind: status.wind});
             } else if(activePainting[1]) {
                 console.log("Toggle Wind!");
+                clearTimeout(fpsTimer);
+                setStatus({night: status.night, rain: status.rain, wind: !status.wind});
             } else if(activePainting[2]) {
                 console.log("Toggle Rain!");
+                clearTimeout(fpsTimer);
+                setStatus({night: status.night, rain: !status.rain, wind: status.wind});
             }
         }
     };
@@ -115,7 +127,6 @@ const Foreground = (
         context.mozImageSmoothingEnabled = false;
         context.imageSmoothingEnabled = false;
 
-        let fpsTimer: NodeJS.Timeout;
 
         const render = () => {
             draw(context);
