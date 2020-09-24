@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Component } from 'react';
 import './Poetry.css';
 import '../App.css';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 interface PoetryDB{
@@ -11,82 +13,85 @@ interface PoetryDB{
 }
 
 
-export default class Poetry extends Component<{}, PoetryDB> {
+const Poetry = () => {
 
+    const linesRef = React.useRef(null);
+
+    const [author, setAuthor] = useState(null);
+    const [title, setTitle] = useState(null);
+    const [lines, setLines] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    //let lineTimer : NodeJS.Timeout;
    
-    async getPoem(a:String, t:String) {
+    const getPoem = async (a:String, t:String) => {
       
         let response = await fetch('https://poetrydb.org/author,title/'+a+';'+t);
         
         let data = await response.json();
-        this.setState({
-            author: data[0].author,
-            title: data[0].title,
-            lines: data[0].lines 
-        })  
-        
 
+        setAuthor(data[0].author);
+        setTitle(data[0].title);
+        setLines(data[0].lines);
     };
-    highlightPoem() {
-        console.log("fungerer dette?")
+
+    const highlightPoem = () => {      
+
+        console.log(linesRef.current)
+        console.log(linesRef.current.children);
         let currentLine = 0;
-        console.log("listelengde" + this.state.lines.length);
-        const lineTimer = setInterval(() => {
-            if(currentLine > this.state.lines.length) {
-                clearInterval(lineTimer);
-            }
-
-            currentLine += 1;
-            console.log(currentLine);
-            const id = document.querySelector("#" + currentLine); 
-            id.className += "word";
-
-        }, 2000)
-
-
-        /*
-        this.state.lines.forEach((s, i) => {
-            console.log("beginning loop")
-            setTimeout(() => {
-                const id = document.getElementById(String(i)); 
-
-                id.className += "word";
-            }, i * 5000)
-            console.log("after loop")
+ 
+        if(!loading) {
+            const lineTimer = setInterval(() => {    
+                if(currentLine > linesRef.current.children.length) {
+                    clearInterval(lineTimer);
+                } 
+            let p = linesRef.current.children[currentLine];
+            let s = p.children[0] 
             
+            p.className += "word";
+            s.className += "word";
+            console.log(p)
+            
+            if(currentLine >0){
+                console.log("ja")
+                let p1 = linesRef.current.children[currentLine-1]
+                let s1 = p1.children[0]
 
-        })*/
+                
+                p1.className = "";
+                s1.className = "";
+            }
+    
+            currentLine += 1;
+                
+            }, 1000)
+        }
 
     }
     
-    componentDidMount(){
-        this.getPoem("George Eliot", "God Needs Antonio").then(() => {this.highlightPoem()});
-        
-    }
-    render() {
-        if (!this.state) {
-            return <div>
-                <p>Loading...</p>
-            </div>
-        }
-        
-        console.log(this.state.author)
-        const items = this.state.lines.map((line, index) => {
-            return <p key={index} id={String(index)}><span data-text={line}>{line}</span></p>
-        })
+    useEffect(() => {
+        getPoem("George Eliot", "God Needs Antonio").then(() => {
+            setLoading(false);
+            highlightPoem();
+        });
+ 
+    }, [loading]);
 
-        return (
-            
-            <div className="poemContainer">
-                <h1>{this.state.author}</h1>
-                <h2>{this.state.title}</h2>
-                <div className="poemLines">
-                    {items}
-                    
-                </div>
-            </div>
-            
-        );
-    }
+    return (
+        <div className="poemContainer">
+            {loading === false ?
+            <>
+            <h1>{author}</h1>
+            <h2>{title}</h2>
+            <div ref={linesRef} className="poemLines">
+                {lines.map((line: string, index: number) => {
+                    return <p key={index} id={String(index)}><span data-text={line} >{line}</span></p>
+                })}
+            </div></> : null}
+        </div>
+        
+    );
 }
-
+    
+export default Poetry;

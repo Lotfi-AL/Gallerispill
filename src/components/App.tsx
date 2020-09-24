@@ -42,10 +42,12 @@ export class App extends React.Component<{}, MyState> {
     //   return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
     // }
     return (
+      <>
       <StatusContext.Provider value={this.state.status}>
         <Game></Game>
         <Poetry></Poetry>
       </StatusContext.Provider>
+      </>
     );
   }
 }
