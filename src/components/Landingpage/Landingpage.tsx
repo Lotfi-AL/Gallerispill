@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./Landingpage.css";
 import "./Animation.css";
+import { LoadBtn } from "../ControlPanel/LoadBtn";
 
 interface StatusCardProps {
   DefaultStatus: StatusTypes;
@@ -37,9 +38,10 @@ export default class Landingpage extends React.Component<ToggleProps, {}> {
             </ul>
           </div>
         </div>
-        <a href="#" onClick={this.props.ClickHandler}>
-          <div className="box link">Click to start!</div>
-        </a>
+        <LoadBtn></LoadBtn>
+        <div onClick={this.props.ClickHandler} className="box link startLink">
+          Click to start!
+        </div>
       </div>
     );
   }

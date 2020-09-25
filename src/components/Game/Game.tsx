@@ -9,7 +9,9 @@ export default class Game extends Component {
     super(props);
     this.state = {};
   }
-
+  componentDidMount() {
+    window.sessionStorage.setItem("landed", "false");
+  }
   render() {
     return (
       <>
