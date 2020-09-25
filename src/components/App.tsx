@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import Landingpage from "./Landingpage/Landingpage";
+import Poetry from "./Poetry/Poetry";
 import Game from "./Game/Game";
 import { StatusContext, statusType } from "./Store/StatusContext";
 import Audio from "./ControlPanel/Audio";
@@ -46,6 +47,7 @@ export class App extends React.Component<{}, MyState> {
                 <Game></Game>
                 <Audio></Audio>
                 <ControlPanel></ControlPanel>
+                <Poetry></Poetry>
             </StatusProvider>
         );
     }
