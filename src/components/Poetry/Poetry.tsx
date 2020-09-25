@@ -54,7 +54,7 @@ const Poetry = () => {
                 //     s1.className = "";
                 // }
                 currentLine += 1;
-            }, 1000);
+            }, 3000);
         }
     };
 
@@ -66,22 +66,26 @@ const Poetry = () => {
     }, [loading]);
 
     return (
-        <div className="poemContainer">
-            {loading === false ? (
-                <>
-                    <h1>{author}</h1>
-                    <h2>{title}</h2>
-                    <div ref={linesRef} className="poemLines">
-                        {lines.map((line: string, index: number) => {
-                            return (
-                                <p key={index} id={String(index)}>
-                                    <span data-text={line}>{line}</span>
-                                </p>
-                            );
-                        })}
-                    </div>
-                </>
-            ) : null}
+        <div className="poemWrapper">
+            <div className="poemContainer">
+                {loading === false ? (
+                    <>
+                        <h1>{author}</h1>
+                        <h2>{title}</h2>
+                        <div ref={linesRef} className="poemLines">
+                            {lines.map((line: string, index: number) => {
+                                return (
+                                    <p key={index} id={String(index)}>
+                                        <span data-text={line}>{line}</span>
+                                    </p>
+                                );
+                            })}
+                        </div>
+                    </>
+                ) : (
+                    <h1>Loading...</h1>
+                )}
+            </div>
         </div>
     );
 };
