@@ -50,6 +50,7 @@ export class App extends React.Component<{}, MyState> {
             <StatusProvider>
                 <Game></Game>
                 <ControlPanel></ControlPanel>
+                <Poetry></Poetry>
             </StatusProvider>
         );
     }
