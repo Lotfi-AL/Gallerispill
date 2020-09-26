@@ -32,7 +32,7 @@ const Background = (props: any) => {
                         20 * i,
                         20 * tile.canvasY,
                         20,
-                        20
+                        20,
                     );
                 }
             } else if (tile.canvasY === -1) {
@@ -46,7 +46,7 @@ const Background = (props: any) => {
                         20 * tile.canvasX,
                         20 * i,
                         20,
-                        20
+                        20,
                     );
                 }
             } else {
@@ -59,7 +59,7 @@ const Background = (props: any) => {
                     20 * tile.canvasX,
                     20 * tile.canvasY,
                     20,
-                    20
+                    20,
                 );
             }
         }

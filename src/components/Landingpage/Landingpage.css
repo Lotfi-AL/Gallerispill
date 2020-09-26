@@ -32,13 +32,22 @@ a {
 .link {
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: inherit;
 }
-.link:hover,
-.link:focus {
+
+.startLink:hover,
+.startLink:focus {
     color: white;
     background-color: brown;
 }
 
+.startLink:active {
+    position: relative;
+    top: 3px;
+}
 /* Credits */
 
 .credits {

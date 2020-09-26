@@ -1,13 +1,31 @@
 import React, { Component } from "react";
 import SaveBtn from "./SaveBtn";
-import LoadBtn from "./LoadBtn";
+import { LoadBtn } from "./LoadBtn";
+import Audio from "./Audio";
+import "./ControlPanel.css";
+import backIcon from "../../assets/icons/left-arrow.svg";
 export class ControlPanel extends Component {
     render() {
         return (
-            <React.Fragment>
-                <LoadBtn></LoadBtn>
-                <SaveBtn></SaveBtn>
-            </React.Fragment>
+            <div className="controlpanelWrapper">
+                <div className="controlpanelContainer">
+                    <button
+                        onClick={() => {
+                            window.location.href = "";
+                            window.sessionStorage.setItem("landed", "true");
+                        }}>
+                        <img src={backIcon} className="controlPanelBtn link" />
+                    </button>
+                    {/* <a
+                        href=""
+                        className="controlPanelBtn"
+                        onClick={() => window.sessionStorage.setItem("landed", "true")}>
+                        <img src={backIcon} className="saveBtn link" />
+                    </a> */}
+                    <Audio></Audio>
+                    <SaveBtn></SaveBtn>
+                </div>
+            </div>
         );
     }
 }

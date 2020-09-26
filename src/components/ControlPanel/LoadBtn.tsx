@@ -1,7 +1,16 @@
 import React from "react";
 import { loadStorage, saveStorage } from "../../utils/LoadSave";
 import { useStatus } from "../Store/StatusProvider";
-export default function LoadBtn() {
+
+type Props = {
+    children: React.ReactNode;
+};
+
+export const LoadBtn = () => {
     const { status, setStatus } = useStatus();
-    return <button onClick={() => setStatus(loadStorage())}>Load</button>;
-}
+    return (
+        <div className="box link startLink" onClick={() => setStatus(loadStorage())}>
+            Load Previous Save
+        </div>
+    );
+};

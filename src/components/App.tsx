@@ -19,7 +19,7 @@ export type saveState = {
 };
 
 export class App extends React.Component<{}, MyState> {
-    state: MyState = { landed: true };
+    state: MyState = { landed: window.sessionStorage.getItem("landed") === "true" };
 
     constructor(props: any) {
         super(props);
@@ -39,13 +39,16 @@ export class App extends React.Component<{}, MyState> {
 
     render() {
         if (this.state.landed) {
-            return <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>;
+            return (
+                <StatusProvider>
+                    <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>
+                </StatusProvider>
+            );
         }
 
         return (
             <StatusProvider>
                 <Game></Game>
-                <Audio></Audio>
                 <ControlPanel></ControlPanel>
                 <Poetry></Poetry>
             </StatusProvider>
