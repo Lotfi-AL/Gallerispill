@@ -44,6 +44,10 @@ a {
     background-color: brown;
 }
 
+.startLink:active {
+    position: relative;
+    top: 3px;
+}
 /* Credits */
 
 .credits {

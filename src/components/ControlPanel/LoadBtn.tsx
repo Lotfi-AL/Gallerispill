@@ -9,7 +9,7 @@ type Props = {
 export const LoadBtn = () => {
     const { status, setStatus } = useStatus();
     return (
-        <div className="box link" onClick={() => setStatus(loadStorage())}>
+        <div className="box link startLink" onClick={() => setStatus(loadStorage())}>
             Load Previous Save
         </div>
     );

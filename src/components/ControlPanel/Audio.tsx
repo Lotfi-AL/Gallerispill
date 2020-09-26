@@ -15,19 +15,23 @@ export default function Audio() {
     const { status, setStatus } = useStatus();
 
     useEffect(() => {
-        const rainRef = audioRef.current.children[1];
-        const windRef = audioRef.current.children[2];
+        const rainRef = audioRef.current.children[0];
+        const windRef = audioRef.current.children[1];
+        rainRef.volume = 0.04;
+        windRef.volume = 0.04;
         status.rain ? rainRef.play() : rainRef.pause();
         status.wind ? windRef.play() : windRef.pause();
     });
 
     return (
         <React.Fragment>
-            <div className="audio muteBtn" ref={audioRef} onClick={() => setMuted(!muted)}>
-                <img src={muted ? unmuteIcon : muteIcon} className="playPauseBtn link" />
+            <div className="audio" ref={audioRef}>
                 <audio src={rainSrc} muted={muted} autoPlay loop></audio>;
                 <audio src={windSrc} muted={muted} autoPlay loop></audio>
             </div>
+            <button className="muteBtn" onClick={() => setMuted(!muted)}>
+                <img src={muted ? unmuteIcon : muteIcon} className="playPauseBtn controlPanelBtn  link" />
+            </button>
         </React.Fragment>
     );
 }
