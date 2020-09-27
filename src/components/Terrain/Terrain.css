@@ -1,0 +1,67 @@
+.skybox {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -10;
+    image-rendering: pixelated;
+}
+
+.night {
+    background: linear-gradient(180deg, #000000 0%, #021145 50%, #050c6b 60%, #2a0092 80%, #3303a9 100%);
+}
+
+.day {
+    background: linear-gradient(180deg, #00f9ff 0%, #7afcff 50%, #91fcff 60%, #bafdff 80%, #c9fcfd 100%);
+    overflow-y: hidden;
+}
+
+.sky {
+    z-index: -10;
+}
+
+.farMountains {
+    z-index: -9;
+}
+
+.cloud.one svg {
+    width: 15vw;
+    height: 15vh;
+    fill: white;
+    position: relative;
+    animation: linear infinite;
+    animation-duration: 20s;
+    animation-name: fly1;
+}
+.cloud.two,
+.cloud.one {
+    width: 100vw;
+    max-height: 30vh;
+    position: absolute;
+    top: 5%;
+    left: 0;
+}
+.cloud.two svg {
+    width: 15vw;
+    height: 15vh;
+    fill: white;
+    position: relative;
+    animation: linear infinite;
+    animation-duration: 30s;
+    animation-name: fly2;
+}
+@keyframes fly1 {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+@keyframes fly2 {
+    0% {
+        left: -200%;
+    }
+    100% {
+        left: 100%;
+    }
+}

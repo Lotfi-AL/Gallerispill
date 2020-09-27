@@ -6,6 +6,7 @@ import { StatusContext, statusType } from "./Store/StatusContext";
 import Audio from "./ControlPanel/Audio";
 import { StatusProvider } from "./Store/StatusProvider";
 import Ask from "./Store/StatusContextExample";
+import Terrain from "./Terrain/Terrain";
 import ControlPanel from "./ControlPanel/ControlPanel";
 type MyState = {
     landed: boolean;
@@ -45,9 +46,9 @@ export class App extends React.Component<{}, MyState> {
                 </StatusProvider>
             );
         }
-
         return (
             <StatusProvider>
+                <Terrain></Terrain>
                 <Game></Game>
                 <ControlPanel></ControlPanel>
                 <Poetry></Poetry>
