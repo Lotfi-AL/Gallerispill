@@ -14,7 +14,6 @@ const Foreground = (
         import("react").ClassAttributes<HTMLCanvasElement> &
         import("react").CanvasHTMLAttributes<HTMLCanvasElement>,
 ) => {
-    console.log("foreground");
     const canvasRef = useRef(null);
     const { status, setStatus, setCurrScene, currScene } = useStatus();
     const { scene, setScene } = useStatus();
@@ -118,7 +117,6 @@ const Foreground = (
         }
 
         if (event.keyCode === 32) {
-            // console.log(scene);
             const newStatus: statusType = {
                 rain: scene[currScene].rain,
                 wind: scene[currScene].wind,
@@ -127,32 +125,27 @@ const Foreground = (
             // const newStatus = scene[currScene];
 
             if (activePainting[0]) {
-                console.log("Toggle Night!");
                 clearTimeout(fpsTimer);
                 newStatus.night = !newStatus.night;
                 setStatus(newStatus);
                 scene[currScene] = newStatus;
                 setScene(scene);
             } else if (activePainting[1]) {
-                console.log("Toggle Wind!");
                 clearTimeout(fpsTimer);
                 newStatus.wind = !newStatus.wind;
                 setStatus(newStatus);
                 scene[currScene] = newStatus;
                 setScene(scene);
             } else if (activePainting[2]) {
-                console.log("Toggle Rain!");
                 clearTimeout(fpsTimer);
                 newStatus.rain = !newStatus.rain;
                 setStatus(newStatus);
                 scene[currScene] = newStatus;
                 setScene(scene);
             } else if (activeDoor[0]) {
-                console.log("Left door entered");
                 currScene === 0 ? setCurrScene(4) : setCurrScene(currScene - 1);
             } else if (activeDoor[1]) {
                 currScene === 4 ? setCurrScene(0) : setCurrScene(currScene + 1);
-                console.log("Right door entered");
             }
         }
     };

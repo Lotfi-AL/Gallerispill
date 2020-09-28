@@ -12,8 +12,6 @@ import { Rain } from "./Rain";
 const Terrain = () => {
     const { scene, currScene } = useStatus();
     const [status, setStatus] = useState(scene[currScene]);
-    console.log("terrain");
-
     const snowFlakes: JSX.Element[] = [];
 
     useEffect(() => {
