@@ -47,7 +47,7 @@ export default function Landingpage(props: ToggleProps) {
                 <h2>Assets and sources</h2>
                 <ul>
                     <li>
-                        <a target="_blank" href="">
+                        <a target="_blank" href="https://poetrydb.org/index.html">
                             Poetry
                         </a>
                     </li>
