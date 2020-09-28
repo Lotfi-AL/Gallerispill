@@ -1,26 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import skyTexture from "../../assets/terrain/sky_fc.png";
 import farMountainsTexture from "../../assets/terrain/far_mountains_fc.png";
 import grassyMountainsTexture from "../../assets/terrain/grassy_mountains_fc.png";
+import rainTexture from "../../assets/terrain/rain.png";
 import "./Terrain.css";
-import Cloud from "./Cloud";
 import { useStatus } from "../Store/StatusProvider";
+import { statusType } from "../Store/StatusContext";
+import Skybox from "./Skybox";
+import { Rain } from "./Rain";
 
 const Terrain = () => {
-    const { currScene, scene } = useStatus();
-    let clouds: JSX.Element[] = [];
-    const AddCloud = (min: number, max: number) => {
-        for (let i = 0; i <= Math.floor(Math.random() * (max - min + 1) + min); i++) {
-            clouds.push(<Cloud />);
-        }
-    };
-    AddCloud(3, 6);
+    const { scene, currScene } = useStatus();
+    const [status, setStatus] = useState(scene[currScene]);
+    console.log("terrain");
+
+    const snowFlakes: JSX.Element[] = [];
+
+    useEffect(() => {
+        setStatus(scene[currScene]);
+    });
 
     return (
-        <div className="skybox day">
-            <div className="cloud one">{clouds}</div>
-            <div className="cloud two">{clouds}</div>
-        </div>
+        <>
+            <Rain {...status}></Rain>
+            <Skybox {...status}></Skybox>
+        </>
     );
 };
 

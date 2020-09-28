@@ -50,8 +50,9 @@ export class App extends React.Component<{}, MyState> {
         return (
             <StatusProvider>
                 <Terrain></Terrain>
-                <Game></Game>
                 <ControlPanel></ControlPanel>
+                <Game></Game>
+
                 <Poetry></Poetry>
             </StatusProvider>
         );
