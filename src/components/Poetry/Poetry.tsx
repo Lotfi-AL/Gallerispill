@@ -48,7 +48,6 @@ const Poetry = () => {
                 clearInterval(lineTimer);
             }
             let p = linesRef.current.children[currentLine];
-            console.log(p);
 
             p.className += "word";
 
