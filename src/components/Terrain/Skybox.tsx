@@ -10,15 +10,21 @@ export default function Skybox(status: statusType) {
     }
 
     let divName = "";
+    let windDiv = "";
     if (status.night === true) {
         divName = "night";
-    } else {
-        divName = "day";
-    }
+    } else divName = "day";
+
+    if (status.wind === true) {
+        windDiv = "wind";
+    } else windDiv = "";
+
     return (
         <div className={"skybox " + divName}>
-            <div className="cloud one">{clouds}</div>
-            <div className="cloud two">{clouds}</div>
+            <div className={"cloud one " + windDiv}>{clouds}</div>
+            <div className={"cloud two " + windDiv}>{clouds}</div>
+            <div className={"cloud three " + windDiv}>{clouds}</div>
+            <div className={"cloud four " + windDiv}>{clouds}</div>
         </div>
     );
 }
