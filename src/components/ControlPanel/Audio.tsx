@@ -9,6 +9,7 @@ import unmuteIcon from "../../assets/icons/volume-mute.svg";
 
 type mutedType = {};
 export default function Audio() {
+    console.log("audio");
     const audioRef = useRef(null);
 
     const [muted, setMuted] = useState(false);
@@ -19,8 +20,6 @@ export default function Audio() {
         const windRef = audioRef.current.children[1];
         rainRef.volume = 0.2;
         windRef.volume = 0.2;
-        console.log(scene);
-        console.log(scene[currScene]);
         scene[currScene].rain ? rainRef.play() : rainRef.pause();
         scene[currScene].wind ? windRef.play() : windRef.pause();
     });

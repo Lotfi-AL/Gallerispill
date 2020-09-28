@@ -14,6 +14,7 @@ const Foreground = (
         import("react").ClassAttributes<HTMLCanvasElement> &
         import("react").CanvasHTMLAttributes<HTMLCanvasElement>,
 ) => {
+    console.log("foreground");
     const canvasRef = useRef(null);
     const { status, setStatus, setCurrScene, currScene } = useStatus();
     const { scene, setScene } = useStatus();

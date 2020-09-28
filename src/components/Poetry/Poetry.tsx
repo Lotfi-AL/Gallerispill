@@ -44,7 +44,7 @@ const Poetry = () => {
 
                 p.className += "word";
                 s.className += "word";
-                console.log(p);
+                // console.log(p);
 
                 // if(currentLine >0){
                 //     let p1 = linesRef.current.children[currentLine-1]
