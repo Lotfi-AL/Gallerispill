@@ -7,6 +7,8 @@ module.exports = {
     // using ts-jest
     transform: {
         "^.+\\.tsx?$": "ts-jest",
+        "^.+\\.css$": "<rootDir>/__mocks__/cssTransformer.js",
+        "^.+\\.png|svg|mp3$": "<rootDir>/__mocks__/fileTransformer.js",
     },
 
     // Runs special logic, such as cleaning up components
@@ -20,5 +22,5 @@ module.exports = {
     testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
 
     // Module file extensions for importing
-    moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+    moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node", "css"],
 };

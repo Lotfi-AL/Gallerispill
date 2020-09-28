@@ -1,10 +1,9 @@
-import * as React from "react";
-import { render, fireEvent, waitForElement } from "@testing-library/react";
-
 import { App } from "../components/App";
+import renderer from "react-test-renderer";
+import React from "react";
 
-describe("<App />", () => {
-    test("should display a blank login form, with remember me checked by default", async () => {
-        // ???
-    });
+test("app_snapshot", () => {
+    const component = renderer.create(<App />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
 });

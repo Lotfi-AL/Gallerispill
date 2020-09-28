@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app_snapshot 1`] = `
+<div
+  className="landingpage"
+>
+  <div
+    className="instructions box"
+  >
+    <h1>
+      Description
+    </h1>
+    <p>
+      This is a 2d immersive poem experience. Move with arrow keys and interact with scene components using the spacebar. Read along with the poems as they are highlighted and go through the doors to switch poem and scene. As you go along you can change the scene to your liking by interacting with the paintings.
+    </p>
+  </div>
+  <div
+    className="credits"
+  >
+    <div
+      className="container box"
+    >
+      <p
+        className="text"
+      >
+        Created by
+      </p>
+      <ul
+        className="list"
+      >
+        <li
+          className="item"
+        >
+          Yeti
+        </li>
+        <li
+          className="item"
+        >
+          Hobbit
+        </li>
+        <li
+          className="item"
+        >
+          Gorilla
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="box link startLink"
+    onClick={[Function]}
+  >
+    Load Previous Save
+  </div>
+  <div
+    className="box link startLink"
+    onClick={[Function]}
+  >
+    Click to start!
+  </div>
+  <div
+    className="box"
+  >
+    <h2>
+      Assets and sources
+    </h2>
+    <ul>
+      <li>
+        <a
+          href="https://poetrydb.org/index.html"
+          target="_blank"
+        >
+          Poetry
+        </a>
+      </li>
+      <li>
+        SFX
+        <ul>
+          <li>
+            <a
+              href="https://www.fesliyanstudios.com/royalty-free-sound-effects-download/rain-21"
+              target="_blank"
+            >
+              Rain
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.fesliyanstudios.com/royalty-free-sound-effects-download/wind-blowing-37"
+              target="_blank"
+            >
+              Wind
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a
+          href="https://oddpotatogift.itch.io/16x16-fantasy-pack"
+          target="_blank"
+        >
+          House tileMap
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://thkaspar.itch.io/micro-character-bases"
+          target="_blank"
+        >
+          Character
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://vnitti.itch.io/grassy-mountains-parallax-background"
+          target="_blank"
+        >
+          Terrain
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://fonts.google.com/specimen/Press+Start+2P?sidebar.open=true&selection.family=Press+Start+2P"
+          target="_blank"
+        >
+          Fonts
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://codepen.io/yoannhel/pen/sJpDj"
+          target="_blank"
+        >
+          Credits animation
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
