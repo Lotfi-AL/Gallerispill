@@ -48,13 +48,18 @@ export class App extends React.Component<{}, MyState> {
             );
         }
         return (
-            <StatusProvider>
-                <Terrain></Terrain>
-                <ControlPanel></ControlPanel>
-                <Game></Game>
+            <>
+                <StatusProvider>
+                    <Terrain></Terrain>
+                    <ControlPanel></ControlPanel>
+                    <Game></Game>
 
-                <Poetry></Poetry>
-            </StatusProvider>
+                    <Poetry></Poetry>
+                </StatusProvider>
+                <div className="rotate">
+                    <h2>Please rotate your phone to continue...</h2>
+                </div>
+            </>
         );
     }
 }
