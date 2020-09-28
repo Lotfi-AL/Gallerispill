@@ -8,7 +8,7 @@ import Cloud from "./Cloud";
 import { useStatus } from "../Store/StatusProvider";
 
 const Terrain = () => {
-    const { status } = useStatus();
+    const { status, currScene, scene } = useStatus();
     const clouds: JSX.Element[] = [];
     const rainDrops: JSX.Element[] = [];
     const snowFlakes: JSX.Element[] = [];
@@ -18,12 +18,13 @@ const Terrain = () => {
     }
 
     const Rain = () => {
-        if (status.rain == true && status.wind == false) {
+        console.log(scene[currScene]);
+        if (scene[currScene].rain === true && scene[currScene].wind === false) {
             for (let i = 0; i < 200; i++) {
                 rainDrops.push(<div className="drop"></div>);
             }
             return <div className="rain">{rainDrops}</div>;
-        } else if (status.rain == true && status.wind == true) {
+        } else if (scene[currScene].rain == true && scene[currScene].wind == true) {
             for (let i = 0; i < 200; i++) {
                 rainDrops.push(<div className="drop wind"></div>);
             }

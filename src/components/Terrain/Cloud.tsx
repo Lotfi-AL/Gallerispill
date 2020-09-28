@@ -4,11 +4,11 @@ import "./Terrain.css";
 import { useStatus } from "../Store/StatusProvider";
 
 const Cloud = (props: JSX.IntrinsicAttributes) => {
-    const { status } = useStatus();
+    const { status, currScene, scene } = useStatus();
     let fill = "";
-    if (status.rain == true && status.night == false) {
+    if (scene[currScene].rain == true && scene[currScene].night == false) {
         fill = "grey";
-    } else if (status.rain == true && status.night == true) {
+    } else if (scene[currScene].rain == true && scene[currScene].night == true) {
         fill = "blue";
     } else {
         fill = "white";
