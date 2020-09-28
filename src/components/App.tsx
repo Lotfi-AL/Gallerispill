@@ -29,6 +29,7 @@ export class App extends React.Component<{}, MyState> {
     }
 
     toggleClickHandler = () => {
+        console.log("click");
         this.setState((prevState) => {
             if (prevState.landed === true) {
                 return { landed: false };
@@ -40,7 +41,7 @@ export class App extends React.Component<{}, MyState> {
     };
 
     render() {
-        if (this.state.landed) {
+        if (!this.state.landed) {
             return (
                 <StatusProvider>
                     <Landingpage ClickHandler={this.toggleClickHandler}></Landingpage>

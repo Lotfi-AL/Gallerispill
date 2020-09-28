@@ -25,7 +25,7 @@ export const StatusProvider = ({ children }: Props) => {
     const [currScene, setCurrScene] = React.useState(defaultCurrScene);
     React.useEffect(() => {
         saveSession(scene, currScene);
-    }, [currScene, scene[currScene]]);
+    }, [currScene, status]);
 
     return (
         <StatusContext.Provider value={{ status, setStatus, currScene, setCurrScene, scene, setScene }}>
