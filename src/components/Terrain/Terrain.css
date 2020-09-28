@@ -34,27 +34,41 @@
     overflow-x: hidden;
     animation: linear infinite;
 }
-.cloud.one.wind svg,
-.cloud.three.wind svg {
+.cloud.one.wind svg {
     animation-duration: 10s;
     animation-name: fly1;
 }
-.cloud.two.wind svg,
-.cloud.four.wind svg {
+.cloud.two.wind svg {
     animation-duration: 15s;
     animation-name: fly2;
 }
+.cloud.three.wind svg {
+    animation-duration: 5s;
+    animation-name: fly1;
+}
 
-.cloud.one svg,
+.cloud.four.wind svg {
+    animation-duration: 7.5s;
+    animation-name: fly2;
+}
+
+.cloud.one svg {
+    animation-duration: 25s;
+    animation-name: fly1;
+}
+.cloud.two svg {
+    animation-duration: 37.5s;
+    animation-name: fly2;
+}
 .cloud.three svg {
     animation-duration: 20s;
     animation-name: fly1;
 }
-.cloud.two svg,
 .cloud.four svg {
     animation-duration: 30s;
     animation-name: fly2;
 }
+
 .cloud.two,
 .cloud.one {
     width: 100vw;
@@ -101,13 +115,13 @@
 .drop {
     width: 1px;
     height: 0vh;
-    background: gray;
+    background: blue;
     animation: falldown 1s infinite;
 }
 .drop.wind {
     width: 1px;
     height: 0vh;
-    background: gray;
+    background: blue;
     animation: f2 1s infinite;
 }
 .drop:nth-child(2n + 0) {
@@ -167,4 +181,18 @@
         margin-top: 100vh;
         transform: rotate(-90deg);
     }
+}
+.mountain {
+    position: absolute;
+    left: -10vw;
+    bottom: 0;
+
+    image-rendering: pixelated;
+}
+.mountain svg {
+    margin-top: -1%;
+    margin-left: -10%;
+    position: absolute;
+
+    image-rendering: pixelated;
 }

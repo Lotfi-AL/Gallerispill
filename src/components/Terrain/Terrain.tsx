@@ -8,6 +8,7 @@ import { useStatus } from "../Store/StatusProvider";
 import { statusType } from "../Store/StatusContext";
 import Skybox from "./Skybox";
 import { Rain } from "./Rain";
+import Mountain from "./Mountain";
 
 const Terrain = () => {
     const { scene, currScene } = useStatus();
@@ -20,6 +21,7 @@ const Terrain = () => {
 
     return (
         <>
+            <Mountain></Mountain>
             <Rain {...status}></Rain>
             <Skybox {...status}></Skybox>
         </>
