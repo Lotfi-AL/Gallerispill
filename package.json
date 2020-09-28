@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest",
+        "test:watch": "jest --watch",
         "start": "webpack-dev-server --open",
         "build": "webpack"
     },
@@ -33,8 +34,13 @@
         "webpack-dev-server": "^3.11.0"
     },
     "dependencies": {
+        "@testing-library/jest-dom": "^5.11.4",
+        "@testing-library/react": "^11.0.4",
+        "@types/jest": "^26.0.14",
+        "jest": "^26.4.2",
         "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+        "react-dom": "^16.13.1",
+        "ts-jest": "^26.4.0"
     },
     "husky": {
         "hooks": {
