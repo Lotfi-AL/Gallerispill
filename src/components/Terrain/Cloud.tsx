@@ -4,6 +4,7 @@ import "./Terrain.css";
 import { useStatus } from "../Store/StatusProvider";
 
 const Cloud = (props: JSX.IntrinsicAttributes) => {
+    // returns an SVG element of cloud. this was the easiest way to import SVG element to components and still be able to manipulate the element.
     const { status, scene, currScene } = useStatus();
     let fill = "";
     if (scene[currScene].rain == true && scene[currScene].night == false) {

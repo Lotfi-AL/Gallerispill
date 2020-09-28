@@ -3,6 +3,7 @@ import { statusType } from "../../components/Store/StatusContext";
 import Cloud from "./Cloud";
 
 export default function Skybox(status: statusType) {
+    // adds cloud-elements to a list. the list is then rendered inside the return method. easier way to do this than manually copying the element
     const clouds: JSX.Element[] = [];
 
     for (let i = 0; i <= Math.floor(Math.random() * (5 - 3 + 1) + 3); i++) {

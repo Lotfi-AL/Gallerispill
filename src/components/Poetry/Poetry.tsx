@@ -6,11 +6,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useStatus } from "../Store/StatusProvider";
 
-interface PoetryDB {
-    author: String;
-    title: String;
-    lines: String[];
-}
 interface PoemMetaData {
     author: String;
     title: String;
@@ -26,7 +21,7 @@ const Poetry = () => {
     const [lines, setLines] = useState(null);
     const [loading, setLoading] = useState(true);
     const { currScene } = useStatus();
-
+    // list of poems that we want to get from the API
     const poemMetaList: PoemMetaData[] = [
         { author: "George Eliot", title: "God Needs Antonio" },
         { author: "Adam Lindsay Gordon", title: "A Song of Autumn" },
@@ -34,7 +29,7 @@ const Poetry = () => {
         { author: "Thomas Campbell", title: "The River of Life" },
         { author: "William Shakespeare", title: "Spring" },
     ];
-
+    // function to fetch the poem from database
     const getPoem = async (a: String, t: String) => {
         let response = await fetch("https://poetrydb.org/author,title/" + a + ";" + t);
         let data = await response.json();
@@ -44,7 +39,7 @@ const Poetry = () => {
     };
 
     let currentLine = 0;
-
+    // function to reset the highlighting when going to another scene
     const removeHightlighting = () => {
         if (!loading) {
             for (let i: number = 0; i < linesRef.current.children.length; i++) {
@@ -52,7 +47,7 @@ const Poetry = () => {
             }
         }
     };
-
+    // function to highlight poem
     const highlightPoem = () => {
         if (!loading) {
             clearInterval(lineTimer);

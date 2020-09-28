@@ -1,5 +1,7 @@
 ﻿# <center>Prosjekt 2, Gallerispill </center>
 
+<b> NB! Dersom du forsøker å åpne i gitpod, og har deaktivert pop-ups, anbefaler vi deg å dra skjermen som viser nettleseren til venstre!
+
 Vi har valgt å løse oppgaven med et spill, der brukeren kan kontrollere en figur og bevege seg til nye scener og være med på å påvirke utstillingen med elementer som regn, vind og nattmodus.
 
 ## <center> React & Typescript</center>

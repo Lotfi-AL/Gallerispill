@@ -2,6 +2,7 @@ import React from "react";
 
 const Mountain = () => {
     return (
+        // return an SVG element of mountain
         <svg
             className="mountain"
             version="1.1"
