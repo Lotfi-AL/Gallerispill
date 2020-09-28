@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import "./Terrain.css";
 import { useStatus } from "../Store/StatusProvider";
 

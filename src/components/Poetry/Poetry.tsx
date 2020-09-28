@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Component } from "react";
 import "./Poetry.css";
 import "../App.css";
 import { useState } from "react";

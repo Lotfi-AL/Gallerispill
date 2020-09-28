@@ -1,6 +1,6 @@
 tasks:
-  - init: npm install && npm run build
-    command: npm run start
+    - init: npm install && npm run build && npm run test
+      command: npm run start
 ports:
-  - port: 8080
-    onOpen: open-browser
+    - port: 8080
+      onOpen: open-browser
