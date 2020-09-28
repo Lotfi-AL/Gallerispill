@@ -54,5 +54,5 @@ h2 {
 
 .word {
     color: #ffc800;
-    transition: all 2s linear;
+    transition: color 2s linear;
 }
