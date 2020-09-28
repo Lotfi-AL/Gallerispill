@@ -115,13 +115,13 @@
 .drop {
     width: 1px;
     height: 0vh;
-    background: gray;
+    background: blue;
     animation: falldown 1s infinite;
 }
 .drop.wind {
     width: 1px;
     height: 0vh;
-    background: gray;
+    background: blue;
     animation: f2 1s infinite;
 }
 .drop:nth-child(2n + 0) {

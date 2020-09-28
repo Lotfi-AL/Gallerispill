@@ -5,12 +5,12 @@ export const Rain = (status: statusType) => {
     const rainDrops: JSX.Element[] = [];
     if (status.rain === true && status.wind === false) {
         for (let i = 0; i < 200; i++) {
-            rainDrops.push(<div className="drop"></div>);
+            rainDrops.push(<div className="drop" key={i}></div>);
         }
         return <div className="rain">{rainDrops}</div>;
     } else if (status.rain === true && status.wind === true) {
         for (let i = 0; i < 200; i++) {
-            rainDrops.push(<div className="drop wind"></div>);
+            rainDrops.push(<div className="drop wind" key={i}></div>);
         }
         return <div className="rain">{rainDrops}</div>;
     } else return null;

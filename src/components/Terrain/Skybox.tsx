@@ -6,7 +6,7 @@ export default function Skybox(status: statusType) {
     const clouds: JSX.Element[] = [];
 
     for (let i = 0; i <= Math.floor(Math.random() * (5 - 3 + 1) + 3); i++) {
-        clouds.push(<Cloud />);
+        clouds.push(<Cloud key={i} />);
     }
 
     let divName = "";
