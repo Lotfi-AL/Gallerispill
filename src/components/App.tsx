@@ -1,11 +1,8 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import Landingpage from "./Landingpage/Landingpage";
 import Poetry from "./Poetry/Poetry";
 import Game from "./Game/Game";
-import { StatusContext, statusType } from "./Store/StatusContext";
-import Audio from "./ControlPanel/Audio";
 import { StatusProvider } from "./Store/StatusProvider";
-import Ask from "./Store/StatusContextExample";
 import Terrain from "./Terrain/Terrain";
 import ControlPanel from "./ControlPanel/ControlPanel";
 
