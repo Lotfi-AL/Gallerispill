@@ -39,3 +39,5 @@ Vi valgte også å ikke utvikle via gitpod ettersom vi ikke hadde behovet for de
 ## <center>Git</center>
 
 Vi valgte å ta i bruk Issues og Milestones til å dekomponere utviklingen og presisere arbeidsoppgaver. Ved starten av prosjektet ble det lagt opp issues og milestones for komponenter som skulle bli utviklet med forklaringer og beskrivelse av problemstillingen. Under første møte ble det også kartlagt hvor mye arbeid som kreves og dette ble tatt hensyn til når issues ble laget. Dette førte til at det ble enklere å holde oversikt over fremgangen, samtidig som enkelte kunne finne nye arbeidsoppgaver dersom de ble ferdige med det de holdt på med. For hver commit ble issue enten nevnt eller lukket.
+
+Vi krevde også at alle merge requests ble gått gjennom av et annet gruppemedlem for å påse at alle hadde kjennskap til kodebasen. På denne måten ble terskelen for å gjøre endringer på en ukjent del lavere.
