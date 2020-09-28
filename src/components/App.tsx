@@ -58,7 +58,7 @@ export class App extends React.Component<{}, MyState> {
                     <Poetry></Poetry>
                 </StatusProvider>
                 <div className="rotate">
-                    <h2>Please rotate your phone to continue...</h2>
+                    <h2>This website requires the use of a keyboard, please switch device and try again later.</h2>
                 </div>
             </>
         );

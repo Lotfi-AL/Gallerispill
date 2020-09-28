@@ -25,7 +25,6 @@ const Poetry = () => {
     const [title, setTitle] = useState(null);
     const [lines, setLines] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [timer, setTimer] = useState(null);
     const { currScene } = useStatus();
 
     const poemMetaList: PoemMetaData[] = [
