@@ -24,7 +24,7 @@ const Poetry = () => {
     const [lines, setLines] = useState(null);
     const [loading, setLoading] = useState(true);
     const { currScene } = useStatus();
-    //let lineTimer : NodeJS.Timeout;
+
     const poemMetaList: PoemMetaData[] = [
         { author: "George Eliot", title: "God Needs Antonio" },
         { author: "Adam Lindsay Gordon", title: "A Song of Autumn" },
@@ -34,10 +34,8 @@ const Poetry = () => {
     ];
 
     const getPoem = async (a: String, t: String) => {
-        console.log("getpoem");
         let response = await fetch("https://poetrydb.org/author,title/" + a + ";" + t);
         let data = await response.json();
-        console.log("getpoemfinished");
         setAuthor(data[0].author);
         setTitle(data[0].title);
         setLines(data[0].lines);
@@ -45,29 +43,16 @@ const Poetry = () => {
 
     const highlightPoem = () => {
         let currentLine = 0;
+        const lineTimer = setInterval(() => {
+            if (currentLine > linesRef.current.children.length) {
+                clearInterval(lineTimer);
+            }
+            let p = linesRef.current.children[currentLine];
 
-        if (!loading) {
-            const lineTimer = setInterval(() => {
-                if (currentLine > linesRef.current.children.length) {
-                    clearInterval(lineTimer);
-                }
-                let p = linesRef.current.children[currentLine];
-                let s = p.children[0];
+            p.className += "word";
 
-                p.className += "word";
-                s.className += "word";
-                // console.log(p);
-
-                // if(currentLine >0){
-                //     let p1 = linesRef.current.children[currentLine-1]
-                //     let s1 = p1.children[0]
-
-                //     p1.className = "";
-                //     s1.className = "";
-                // }
-                currentLine += 1;
-            }, 3000);
-        }
+            currentLine += 1;
+        }, 3000);
     };
 
     useEffect(() => {
@@ -89,7 +74,7 @@ const Poetry = () => {
                             {lines.map((line: string, index: number) => {
                                 return (
                                     <p key={index} id={String(index)}>
-                                        <span data-text={line}>{line}</span>
+                                        {line}
                                     </p>
                                 );
                             })}
