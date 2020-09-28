@@ -38,6 +38,8 @@ Vi valgte også å ikke utvikle via gitpod ettersom vi ikke hadde behovet for de
 
 Vi har testet nettsiden på flere enheter. Først og fremst på både Windows og Linux maskiner, med både Mozilla Firefox 80 og Google Chrome 85. Det viser seg at bilde renderingen i canvas ikke er helt optimal, da Firefox ikke støtter `image-rendering: pixelated`. Utover dette er nettsiden testet på en OnePlus 7 Pro, og nettsiden fungerer som forventet.
 
+Vi har også en snapshot test laget med Jest. Denne kjøres automatisk i gitpod. 
+
 ## <center>Git</center>
 
 Vi valgte å ta i bruk Issues og Milestones til å dekomponere utviklingen og presisere arbeidsoppgaver. Ved starten av prosjektet ble det lagt opp issues og milestones for komponenter som skulle bli utviklet med forklaringer og beskrivelse av problemstillingen. Under første møte ble det også kartlagt hvor mye arbeid som kreves og dette ble tatt hensyn til når issues ble laget. Dette førte til at det ble enklere å holde oversikt over fremgangen, samtidig som enkelte kunne finne nye arbeidsoppgaver dersom de ble ferdige med det de holdt på med. For hver commit ble issue enten nevnt eller lukket.
