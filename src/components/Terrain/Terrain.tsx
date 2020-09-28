@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import skyTexture from "../../assets/terrain/sky_fc.png";
 import farMountainsTexture from "../../assets/terrain/far_mountains_fc.png";
 import grassyMountainsTexture from "../../assets/terrain/grassy_mountains_fc.png";
@@ -10,31 +10,46 @@ import { useStatus } from "../Store/StatusProvider";
 const Terrain = () => {
     const { status } = useStatus();
     const clouds: JSX.Element[] = [];
-    const AddCloud = (min: number, max: number) => {
-        for (let i = 0; i <= Math.floor(Math.random() * (max - min + 1) + min); i++) {
-            clouds.push(<Cloud />);
-        }
-    };
-    const Rain = () => {
-        if (status.rain == true) {
-            console.log("YESSSSSSS");
-            const rainDrop: JSX.Element[] = [];
-            for (let j = 0; j < 300; j++) {
-                rainDrop.push(<i className="rain"></i>);
-            }
+    const rainDrops: JSX.Element[] = [];
+    const snowFlakes: JSX.Element[] = [];
 
-            return <div className="rainContainer">{rainDrop}</div>;
+    for (let i = 0; i <= Math.floor(Math.random() * (6 - 3 + 1) + 3); i++) {
+        clouds.push(<Cloud />);
+    }
+
+    const Rain = () => {
+        if (status.rain == true && status.wind == false) {
+            for (let i = 0; i < 200; i++) {
+                rainDrops.push(<div className="drop"></div>);
+            }
+            return <div className="rain">{rainDrops}</div>;
+        } else if (status.rain == true && status.wind == true) {
+            for (let i = 0; i < 200; i++) {
+                rainDrops.push(<div className="drop wind"></div>);
+            }
+            return <div className="rain">{rainDrops}</div>;
         } else return null;
     };
 
-    AddCloud(3, 6);
-    return (
-        <>
-            <Rain></Rain>
-            <div className="skybox day">
+    const Skybox = () => {
+        let divName = "";
+        if (status.night == true) {
+            divName = "night";
+        } else {
+            divName = "day";
+        }
+        return (
+            <div className={"skybox " + divName}>
                 <div className="cloud one">{clouds}</div>
                 <div className="cloud two">{clouds}</div>
             </div>
+        );
+    };
+
+    return (
+        <>
+            <Rain></Rain>
+            <Skybox></Skybox>
         </>
     );
 };
