@@ -3,30 +3,24 @@ import { saveState } from "../components/App";
 import { statusType } from "../components/Store/StatusContext";
 import { useStatus } from "../components/Store/StatusProvider";
 
-export function saveStorage(status: statusType) {
-    localStorage.setItem("rain", status.rain.toString());
-    localStorage.setItem("wind", status.wind.toString());
-    localStorage.setItem("night", status.night.toString());
+export function saveStorage(scene: statusType[], currScene: number) {
+    localStorage.setItem("scene", JSON.stringify(scene));
+    localStorage.setItem("currScene", currScene.toString());
 }
 
 export function loadStorage() {
-    const rain = localStorage.getItem("rain") === "true";
-    const wind = localStorage.getItem("wind") === "true";
-    const night = localStorage.getItem("night") === "true";
-    const status: statusType = { rain, wind, night };
-    return status;
+    const scene: statusType[] = JSON.parse(localStorage.getItem("scene"));
+    const currScene: number = Number(localStorage.getItem("currScene"));
+    return { scene, currScene };
 }
 
 export function loadSession() {
-    const rain = sessionStorage.getItem("rain") === "true";
-    const wind = sessionStorage.getItem("wind") === "true";
-    const night = sessionStorage.getItem("night") === "true";
-    const status: statusType = { rain, wind, night };
-    return status;
+    const scene: statusType[] = JSON.parse(sessionStorage.getItem("scene"));
+    const currScene: number = Number(sessionStorage.getItem("currScene"));
+    return { scene, currScene };
 }
 
-export function saveSession(status: statusType) {
-    sessionStorage.setItem("rain", status.rain.toString());
-    sessionStorage.setItem("wind", status.wind.toString());
-    sessionStorage.setItem("night", status.night.toString());
+export function saveSession(scene: statusType[], currScene: number) {
+    sessionStorage.setItem("scene", JSON.stringify(scene));
+    sessionStorage.setItem("currScene", JSON.stringify(currScene));
 }

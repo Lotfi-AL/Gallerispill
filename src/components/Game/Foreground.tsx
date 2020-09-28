@@ -15,8 +15,8 @@ const Foreground = (
         import("react").CanvasHTMLAttributes<HTMLCanvasElement>,
 ) => {
     const canvasRef = useRef(null);
-    const { status, setStatus } = useStatus();
-
+    const { status, setStatus, setCurrScene, currScene } = useStatus();
+    const { scene, setScene } = useStatus();
     const characterSpeed = 2;
 
     const sprite = new Image();
@@ -47,10 +47,8 @@ const Foreground = (
             return false;
         }
     };
-
     const draw = (ctx: CanvasRenderingContext2D) => {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
         ctx.drawImage(paintings, 0, 0, 32, 32, paintingPositions[0], 32, 32, 32);
         ctx.drawImage(paintings, 32, 0, 32, 32, paintingPositions[1], 32, 32, 32);
         ctx.drawImage(paintings, 32, 32, 32, 32, paintingPositions[2], 32, 32, 32);
@@ -112,7 +110,6 @@ const Foreground = (
             row = 1;
         }
     };
-
     document.onkeyup = (event) => {
         walking = false;
         if (event.keyCode === 39 || event.keyCode === 37) {
@@ -120,29 +117,40 @@ const Foreground = (
         }
 
         if (event.keyCode === 32) {
+            // console.log(scene);
             const newStatus: statusType = {
-                night: status.night,
-                rain: status.rain,
-                wind: status.wind,
+                rain: scene[currScene].rain,
+                wind: scene[currScene].wind,
+                night: scene[currScene].night,
             };
+            // const newStatus = scene[currScene];
+
             if (activePainting[0]) {
                 console.log("Toggle Night!");
                 clearTimeout(fpsTimer);
                 newStatus.night = !newStatus.night;
                 setStatus(newStatus);
+                scene[currScene] = newStatus;
+                setScene(scene);
             } else if (activePainting[1]) {
                 console.log("Toggle Wind!");
                 clearTimeout(fpsTimer);
                 newStatus.wind = !newStatus.wind;
                 setStatus(newStatus);
+                scene[currScene] = newStatus;
+                setScene(scene);
             } else if (activePainting[2]) {
                 console.log("Toggle Rain!");
                 clearTimeout(fpsTimer);
                 newStatus.rain = !newStatus.rain;
                 setStatus(newStatus);
+                scene[currScene] = newStatus;
+                setScene(scene);
             } else if (activeDoor[0]) {
                 console.log("Left door entered");
+                currScene === 0 ? setCurrScene(4) : setCurrScene(currScene - 1);
             } else if (activeDoor[1]) {
+                currScene === 4 ? setCurrScene(0) : setCurrScene(currScene + 1);
                 console.log("Right door entered");
             }
         }
