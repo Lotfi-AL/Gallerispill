@@ -16,6 +16,8 @@ interface PoemMetaData {
     title: String;
 }
 
+let lineTimer: NodeJS.Timeout;
+
 const Poetry = () => {
     const linesRef = React.useRef(null);
 
@@ -23,6 +25,7 @@ const Poetry = () => {
     const [title, setTitle] = useState(null);
     const [lines, setLines] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [timer, setTimer] = useState(null);
     const { currScene } = useStatus();
 
     const poemMetaList: PoemMetaData[] = [
@@ -41,27 +44,39 @@ const Poetry = () => {
         setLines(data[0].lines);
     };
 
-    const highlightPoem = () => {
-        let currentLine = 0;
-        const lineTimer = setInterval(() => {
-            if (currentLine > linesRef.current.children.length) {
-                clearInterval(lineTimer);
+    let currentLine = 0;
+
+    const removeHightlighting = () => {
+        if (!loading) {
+            for (let i: number = 0; i < linesRef.current.children.length; i++) {
+                linesRef.current.children[i].className = "";
             }
-            let p = linesRef.current.children[currentLine];
+        }
+    };
 
-            p.className += "word";
+    const highlightPoem = () => {
+        if (!loading) {
+            clearTimeout(lineTimer);
+            lineTimer = setInterval(() => {
+                if (currentLine > linesRef.current.children.length) {
+                    clearInterval(lineTimer);
+                }
+                let p = linesRef.current.children[currentLine];
 
-            currentLine += 1;
-        }, 3000);
+                p.className = "word";
+
+                currentLine += 1;
+            }, 3000);
+        }
     };
 
     useEffect(() => {
-        setLoading(true);
         getPoem(poemMetaList[currScene].author, poemMetaList[currScene].title).then(() => {
             setLoading(false);
+            removeHightlighting();
             highlightPoem();
         });
-    }, [currScene]);
+    }, [currScene, loading]);
 
     return (
         <div className="poemWrapper">
@@ -72,11 +87,7 @@ const Poetry = () => {
                         <h2>{title}</h2>
                         <div ref={linesRef} className="poemLines">
                             {lines.map((line: string, index: number) => {
-                                return (
-                                    <p key={index} id={String(index)}>
-                                        {line}
-                                    </p>
-                                );
+                                return <p key={index}>{line}</p>;
                             })}
                         </div>
                     </>
