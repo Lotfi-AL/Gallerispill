@@ -19,7 +19,7 @@ export default function Audio() {
         const windRef = audioRef.current.children[1];
         rainRef.volume = 0.2;
         windRef.volume = 0.2;
-        console.log(currScene);
+        console.log(scene);
         console.log(scene[currScene]);
         scene[currScene].rain ? rainRef.play() : rainRef.pause();
         scene[currScene].wind ? windRef.play() : windRef.pause();

@@ -17,7 +17,10 @@ export function loadStorage() {
 export function loadSession() {
     const scene: statusType[] = JSON.parse(sessionStorage.getItem("scene"));
     const currScene: number = Number(sessionStorage.getItem("currScene"));
-    return { scene, currScene };
+    console.log(scene);
+    if (scene === null) {
+        return false;
+    } else return { scene, currScene };
 }
 
 export function saveSession(scene: statusType[], currScene: number) {

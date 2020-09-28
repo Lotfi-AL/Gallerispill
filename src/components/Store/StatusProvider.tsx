@@ -13,8 +13,8 @@ export const StatusProvider = ({ children }: Props) => {
     let defaultStatus: statusType;
     let defaultScene: statusType[] = [defStatus, defStatus, defStatus, defStatus, defStatus];
     let defaultCurrScene: number = 2;
-    if (loadSession()) {
-        let sess = loadSession();
+    let sess = loadSession();
+    if (sess) {
         defaultScene = sess.scene;
         defaultCurrScene = sess.currScene;
     } else {

@@ -4,8 +4,10 @@ import farMountainsTexture from "../../assets/terrain/far_mountains_fc.png";
 import grassyMountainsTexture from "../../assets/terrain/grassy_mountains_fc.png";
 import "./Terrain.css";
 import Cloud from "./Cloud";
+import { useStatus } from "../Store/StatusProvider";
 
 const Terrain = () => {
+    const { currScene, scene } = useStatus();
     let clouds: JSX.Element[] = [];
     const AddCloud = (min: number, max: number) => {
         for (let i = 0; i <= Math.floor(Math.random() * (max - min + 1) + min); i++) {
