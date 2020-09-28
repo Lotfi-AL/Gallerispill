@@ -7,9 +7,9 @@ type Props = {
 };
 
 export const LoadBtn = () => {
-    const { status, setStatus } = useStatus();
+    const { setScene, currScene } = useStatus();
     return (
-        <div className="box link startLink" onClick={() => setStatus(loadStorage())}>
+        <div className="box link startLink" onClick={() => setScene(loadStorage().scene)}>
             Load Previous Save
         </div>
     );

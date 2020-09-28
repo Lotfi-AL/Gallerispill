@@ -3,9 +3,9 @@ import { saveStorage } from "../../utils/LoadSave";
 import { useStatus } from "../Store/StatusProvider";
 import saveIcon from "../../assets/icons/save.svg";
 export default function SaveBtn() {
-    const { status, setStatus } = useStatus();
+    const { scene, setScene, currScene } = useStatus();
     return (
-        <button onClick={() => saveStorage(status)}>
+        <button onClick={() => saveStorage(scene, currScene)}>
             <img src={saveIcon} className="link controlPanelBtn" />
         </button>
     );

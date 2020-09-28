@@ -4,8 +4,18 @@ export type statusType = {
     wind: boolean;
     night: boolean;
 };
+
+export type EnumStatus = statusType[];
+
+export type sceneType = {};
 export type StatusContextType = {
+    scene: statusType[];
+    // setScene: (value: statusType[]) => void;
     status: statusType;
+    // currrentScene: number;
+    currScene: number;
+    setCurrScene: (value: number) => void;
+    setScene: (value: statusType[]) => void;
     setStatus: (value: statusType) => void;
 };
 
