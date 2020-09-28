@@ -53,6 +53,6 @@ h2 {
 }
 
 .word {
-    color: #ffc800;
+    color: #ffc800 !important;
     transition: color 2s linear;
 }
