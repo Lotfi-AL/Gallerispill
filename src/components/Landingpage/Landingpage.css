@@ -12,6 +12,7 @@ html {
     align-items: center;
     flex-flow: column;
 }
+
 /* basic box styling */
 
 .box {
@@ -20,6 +21,7 @@ html {
     box-shadow: 0 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
     padding: 1em;
     margin: 1em;
+    max-width: 60%;
 }
 
 /*Link styling */
@@ -29,6 +31,15 @@ a {
     cursor: pointer;
     color: inherit;
 }
+
+.landingpage h1 {
+    color: #ffc800;
+    text-align: center;
+    text-transform: uppercase;
+}
+.landingpage p {
+    text-align: center;
+}
 .link {
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
@@ -37,7 +48,16 @@ a {
     cursor: pointer;
     color: inherit;
 }
-
+a:hover {
+    color: #ffc800;
+}
+ul {
+    list-style: none;
+}
+ul li {
+    padding: 2px;
+    margin-bottom: 2px;
+}
 .startLink:hover,
 .startLink:focus {
     color: white;
@@ -53,15 +73,16 @@ a {
 .credits {
     height: 96px;
     overflow: hidden;
-    line-height: 40px;
+    line-height: 44px;
     color: black;
 }
 
 .credits > .container {
     font-weight: 600;
     overflow: hidden;
-    height: 40px;
-    padding: 0 40px;
+    height: 44px;
+    padding: 0 44px;
+    max-width: 100%;
 }
 
 .text {
