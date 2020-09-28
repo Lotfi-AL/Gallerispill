@@ -186,11 +186,12 @@
     position: absolute;
     left: -10vw;
     bottom: 0;
-
+    pointer-events: none;
     image-rendering: pixelated;
+    z-index: -5;
 }
 .mountain svg {
-    margin-top: -1%;
+    margin-top: 10vh;
     margin-left: -10%;
     position: absolute;
 
