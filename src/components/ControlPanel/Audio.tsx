@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { StatusContext } from "../Store/StatusContext";
 import rainSrc from "../../assets/soundeffects/rain.mp3";
 import windSrc from "../../assets/soundeffects/wind.mp3";
 import { useStatus } from "../Store/StatusProvider";
-import mutebtn from "../../assets/icons/play.svg";
 import muteIcon from "../../assets/icons/volume-up.svg";
 import unmuteIcon from "../../assets/icons/volume-mute.svg";
 
