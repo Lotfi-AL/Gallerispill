@@ -29,7 +29,6 @@ export class App extends React.Component<{}, MyState> {
     }
 
     toggleClickHandler = () => {
-        console.log("click");
         this.setState((prevState) => {
             if (prevState.landed === true) {
                 return { landed: false };

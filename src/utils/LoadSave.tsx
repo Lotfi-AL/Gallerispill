@@ -17,7 +17,6 @@ export function loadStorage() {
 export function loadSession() {
     const scene: statusType[] = JSON.parse(sessionStorage.getItem("scene"));
     const currScene: number = Number(sessionStorage.getItem("currScene"));
-    console.log(scene);
     if (scene === null) {
         return false;
     } else return { scene, currScene };

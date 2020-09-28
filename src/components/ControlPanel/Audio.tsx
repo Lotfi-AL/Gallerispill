@@ -9,7 +9,6 @@ import unmuteIcon from "../../assets/icons/volume-mute.svg";
 
 type mutedType = {};
 export default function Audio() {
-    console.log("audio");
     const audioRef = useRef(null);
 
     const [muted, setMuted] = useState(false);

@@ -34,10 +34,8 @@ const Poetry = () => {
     ];
 
     const getPoem = async (a: String, t: String) => {
-        console.log("getpoem");
         let response = await fetch("https://poetrydb.org/author,title/" + a + ";" + t);
         let data = await response.json();
-        console.log("getpoemfinished");
         setAuthor(data[0].author);
         setTitle(data[0].title);
         setLines(data[0].lines);
