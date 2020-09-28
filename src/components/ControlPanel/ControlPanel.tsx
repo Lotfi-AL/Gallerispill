@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SaveBtn from "./SaveBtn";
-import { LoadBtn } from "./LoadBtn";
+import { LoadBtn } from "../Landingpage/LoadBtn";
 import Audio from "./Audio";
 import "./ControlPanel.css";
 import backIcon from "../../assets/icons/left-arrow.svg";
@@ -12,7 +12,7 @@ export class ControlPanel extends Component {
                     <button
                         onClick={() => {
                             window.location.href = "";
-                            window.sessionStorage.setItem("landed", "true");
+                            window.sessionStorage.setItem("landed", "false");
                         }}>
                         <img src={backIcon} className="controlPanelBtn link" />
                     </button>

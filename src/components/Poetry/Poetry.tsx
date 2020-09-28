@@ -4,11 +4,16 @@ import "./Poetry.css";
 import "../App.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useStatus } from "../Store/StatusProvider";
 
 interface PoetryDB {
     author: String;
     title: String;
     lines: String[];
+}
+interface PoemMetaData {
+    author: String;
+    title: String;
 }
 
 const Poetry = () => {
@@ -18,14 +23,21 @@ const Poetry = () => {
     const [title, setTitle] = useState(null);
     const [lines, setLines] = useState(null);
     const [loading, setLoading] = useState(true);
-
+    const { currScene } = useStatus();
     //let lineTimer : NodeJS.Timeout;
+    const poemMetaList: PoemMetaData[] = [
+        { author: "George Eliot", title: "God Needs Antonio" },
+        { author: "Adam Lindsay Gordon", title: "A Song of Autumn" },
+        { author: "Ben Jonson", title: "A Hymn to God the Father" },
+        { author: "Thomas Campbell", title: "The River of Life" },
+        { author: "William Shakespeare", title: "Spring" },
+    ];
 
     const getPoem = async (a: String, t: String) => {
+        console.log("getpoem");
         let response = await fetch("https://poetrydb.org/author,title/" + a + ";" + t);
-
         let data = await response.json();
-
+        console.log("getpoemfinished");
         setAuthor(data[0].author);
         setTitle(data[0].title);
         setLines(data[0].lines);
@@ -59,11 +71,12 @@ const Poetry = () => {
     };
 
     useEffect(() => {
-        getPoem("George Eliot", "God Needs Antonio").then(() => {
+        setLoading(true);
+        getPoem(poemMetaList[currScene].author, poemMetaList[currScene].title).then(() => {
             setLoading(false);
             highlightPoem();
         });
-    }, [loading]);
+    }, [currScene]);
 
     return (
         <div className="poemWrapper">
