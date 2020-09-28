@@ -58,7 +58,7 @@ const Poetry = () => {
         if (!loading) {
             clearInterval(lineTimer);
             lineTimer = setInterval(() => {
-                if (currentLine > linesRef.current.children.length) {
+                if (currentLine >= linesRef.current.children.length - 1) {
                     clearInterval(lineTimer);
                 }
                 let p = linesRef.current.children[currentLine];

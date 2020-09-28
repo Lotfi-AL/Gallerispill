@@ -8,7 +8,12 @@ import { statusType } from "../Store/StatusContext";
 
 let characterX = 250;
 let row = 1;
+let currentFrame = 0;
+let walking = false;
 let fpsTimer: NodeJS.Timeout;
+
+let activeDoor = [false, false];
+let activePainting = [false, false, false];
 
 const Foreground = (
     props: JSX.IntrinsicAttributes &
@@ -29,15 +34,10 @@ const Foreground = (
     const door = new Image();
     door.src = doorSprite;
     const doorPositions = [10, 438];
-    const activeDoor = [false, false];
 
     const paintings = new Image();
     paintings.src = paintingsSprite;
     const paintingPositions = [60, 110, 160];
-    const activePainting = [false, false, false];
-
-    let currentFrame = 0;
-    let walking = false;
 
     const isCharacterWithin = (x: number, width: number) => {
         if (characterX > x - 16 && characterX < x + width) {
@@ -109,6 +109,7 @@ const Foreground = (
             row = 1;
         }
     };
+
     document.onkeyup = (event) => {
         walking = false;
         if (event.keyCode === 39 || event.keyCode === 37) {
@@ -121,7 +122,6 @@ const Foreground = (
                 wind: scene[currScene].wind,
                 night: scene[currScene].night,
             };
-            // const newStatus = scene[currScene];
 
             if (activePainting[0]) {
                 clearTimeout(fpsTimer);
