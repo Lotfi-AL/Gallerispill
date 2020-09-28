@@ -11,16 +11,18 @@ type mutedType = {};
 export default function Audio() {
     const audioRef = useRef(null);
 
-    const [muted, setMuted] = useState(true);
-    const { status, setStatus } = useStatus();
+    const [muted, setMuted] = useState(false);
+    const { scene, currScene } = useStatus();
 
     useEffect(() => {
         const rainRef = audioRef.current.children[0];
         const windRef = audioRef.current.children[1];
-        rainRef.volume = 0.04;
-        windRef.volume = 0.04;
-        status.rain ? rainRef.play() : rainRef.pause();
-        status.wind ? windRef.play() : windRef.pause();
+        rainRef.volume = 0.2;
+        windRef.volume = 0.2;
+        console.log(currScene);
+        console.log(scene[currScene]);
+        scene[currScene].rain ? rainRef.play() : rainRef.pause();
+        scene[currScene].wind ? windRef.play() : windRef.pause();
     });
 
     return (
