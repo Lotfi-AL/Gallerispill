@@ -34,7 +34,7 @@ Vi valgte også å ikke utvikle via gitpod ettersom vi ikke hadde behovet for de
 
 ## <center>Testing</center>
 
-<b>SKRIV NOE HER
+Vi har testet nettsiden på flere enheter. Først og fremst på både Windows og Linux maskiner, med både Mozilla Firefox 80 og Google Chrome 85. Det viser seg at bilde renderingen i canvas ikke er helt optimal, da Firefox ikke støtter `image-rendering: pixelated`. Utover dette er nettsiden testet på en OnePlus 7 Pro, og nettsiden fungerer som forventet.
 
 ## <center>Git</center>
 
