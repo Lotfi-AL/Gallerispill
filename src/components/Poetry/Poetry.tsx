@@ -56,7 +56,7 @@ const Poetry = () => {
 
     const highlightPoem = () => {
         if (!loading) {
-            clearTimeout(lineTimer);
+            clearInterval(lineTimer);
             lineTimer = setInterval(() => {
                 if (currentLine > linesRef.current.children.length) {
                     clearInterval(lineTimer);
