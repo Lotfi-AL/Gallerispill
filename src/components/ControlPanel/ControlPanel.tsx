@@ -16,12 +16,7 @@ export class ControlPanel extends Component {
                         }}>
                         <img src={backIcon} className="controlPanelBtn link" />
                     </button>
-                    {/* <a
-                        href=""
-                        className="controlPanelBtn"
-                        onClick={() => window.sessionStorage.setItem("landed", "true")}>
-                        <img src={backIcon} className="saveBtn link" />
-                    </a> */}
+
                     <Audio></Audio>
                     <SaveBtn></SaveBtn>
                 </div>

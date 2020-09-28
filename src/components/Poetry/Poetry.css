@@ -51,7 +51,7 @@ h2 {
     font-style: "Press Start 2P";
     padding-bottom: 4px;
 }
-
+/* styling for highlighting */
 .word {
     color: #ffc800 !important;
     transition: color 2s linear;
