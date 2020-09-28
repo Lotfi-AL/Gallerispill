@@ -8,6 +8,7 @@ import { statusType } from "../Store/StatusContext";
 
 let characterX = 250;
 let row = 1;
+let fpsTimer: NodeJS.Timeout;
 
 const Foreground = (
     props: JSX.IntrinsicAttributes &
@@ -35,9 +36,7 @@ const Foreground = (
     const paintingPositions = [60, 110, 160];
     const activePainting = [false, false, false];
 
-    let fpsTimer: NodeJS.Timeout;
     let currentFrame = 0;
-
     let walking = false;
 
     const isCharacterWithin = (x: number, width: number) => {
@@ -160,6 +159,7 @@ const Foreground = (
 
         const render = () => {
             draw(context);
+            clearInterval(fpsTimer);
             fpsTimer = setTimeout(render, 1000 / 12);
         };
 
